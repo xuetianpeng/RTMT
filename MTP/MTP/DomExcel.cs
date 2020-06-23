@@ -25,8 +25,25 @@ namespace MTP
             int pagen = allclient.Count / 32 + 1;//总页数
             for (int p = 1; p < pagen + 1; p++)//从第1页起，至最后一页
             {
-                for()
+                IRow rwpg = sh.CreateRow(0);
+                ICell rwcell = GetCell(rwpg, 1);
+                rwpg.Height = 9;
+                rwcell.SetCellValue("第" + p + "页");
+                for (int x = p - 1; p < 32; p++)
+                {
+                    
+                }
             }
+        }
+
+        public static ICell GetCell(IRow rw, int index)
+        {
+            ICell cell = rw.FirstOrDefault(n => n.ColumnIndex == index);
+            if (cell == null)
+            {
+                cell = rw.CreateCell(index);
+            }
+            return cell;
         }
         public static void GetAPrintExcel(List<Clients.Client> allclient)
         {
