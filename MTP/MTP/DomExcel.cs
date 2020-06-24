@@ -31,7 +31,7 @@ namespace MTP
                 rwcell.SetCellValue("第" + p + "页");
                 for (int x = p - 1; p < 32; p++)
                 {
-                    
+                    sh.CreateRow(41 * (x) + 1);
                 }
             }
         }
