@@ -23,15 +23,16 @@ namespace MTP
             sh.SetMargin(MarginType.HeaderMargin, 0);//页眉
             sh.SetMargin(MarginType.FooterMargin, 0);//页脚
             int pagen = allclient.Count / 32 + 1;//总页数
-            for (int p = 1; p < pagen + 1; p++)//从第1页起，至最后一页
+            for (int p = startn; p < no + 1; p++)//从第1页起，至最后一页
             {
                 IRow rwpg = sh.CreateRow(0);
                 ICell rwcell = GetCell(rwpg, 1);
-                rwpg.Height = 9;
+                rwpg.Height = 9;//页码高度
                 rwcell.SetCellValue("第" + p + "页");
                 for (int x = p - 1; p < 32; p++)
                 {
-                    sh.CreateRow(41 * (x) + 1);
+                    IRow Rzcode =  sh.CreateRow(41 * (x) + 1);
+                    
                 }
             }
         }
