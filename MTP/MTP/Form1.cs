@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using MSExcel = Microsoft.Office.Interop.Excel;
+using Microsoft.CSharp;
 namespace MTP
 {
     public partial class Form1 : Form
@@ -61,6 +62,18 @@ namespace MTP
         {
             Print.PrintMT(Clients.Getclient(textBox1.Text + @"\" + comboBox1.Text), 
                 Convert.ToInt32(textBox2.Text) - 1, Convert.ToInt32(textBox3.Text) - 1);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MSExcel.Application excel = new MSExcel.Application();
+            excel.Visible = false;
+            MSExcel.Workbooks wbs = excel.Workbooks;
+            MSExcel._Workbook _wb = wbs.Add(true);
+            MSExcel.Sheets shs = _wb.Sheets;
+            MSExcel._Worksheet _ws = ((MSExcel._Worksheet)shs.Item[0]);
+            this.Text = _ws.Name;
+
         }
     }
 }

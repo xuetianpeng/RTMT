@@ -10,12 +10,12 @@ namespace MTP
     {
         public static void PrintMT(List<Clients.Client> allclient)
         {
-            DomExcel.GetAPrintExcel(allclient);
+
         }
 
         public static void PrintMT(List<Clients.Client> allclient, int startn, int no)
         {
-            DomExcel.GetSPrintExcel(allclient,startn,no);
+
         }
     }
 }
